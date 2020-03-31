@@ -22,11 +22,6 @@ import lombok.extern.slf4j.Slf4j;
 public class MyCarController
 {
 
-  public MyCarController()
-  {
-    log.info("Konstruktor");
-  }
-
   /*
    * Property/Field injection
    * "CarEngine"-Component-Klasse wird hier eingebunden in die Controller
@@ -35,6 +30,20 @@ public class MyCarController
   CarEngine engine;
 
   CarEngine setterInjEngine;
+
+  CarEngine constrInjEngine;
+
+  /*
+   * Constructor injection
+   * "CarEngine"-Component-Klasse wird hier eingebunden in die Controller
+   */
+  @Autowired
+  public MyCarController(CarEngine constrEngine)
+  {
+    log.info("Konstruktor");
+    this.constrInjEngine = constrEngine;
+  }
+
 
   /*
    * Setter Injection
@@ -60,9 +69,12 @@ public class MyCarController
     log.info("Setter Injection:");
     setterInjEngine.setEngineName("FordEngine");
     log.info("- Car: {}", setterInjEngine.getEngineName());
+
+    log.info("Constructor Injection:");
+    constrInjEngine.setEngineName("FerrariEngine");
+    log.info("- Car: {}", constrInjEngine.getEngineName());
   }
 
-  // Constructor injection
 
 
 }
