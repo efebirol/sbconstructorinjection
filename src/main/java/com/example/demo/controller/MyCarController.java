@@ -31,7 +31,7 @@ public class MyCarController
 
   CarEngine setterInjEngine;
 
-  CarEngine constrInjEngine;
+  private final CarEngine constrInjEngine;
 
   /*
    * Constructor injection
